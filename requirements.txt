@@ -1,0 +1,8 @@
+Django==4.2.1
+gunicorn
+joblib
+numpy
+pandas
+scikit-learn
+xhtml2pdf
+whitenoise
