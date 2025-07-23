@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CKD Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS + Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(to right, #f1f2f6, #dff9fb);
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .form-label {
+            font-weight: 500;
+        }
+
+        .header {
+            background: linear-gradient(to right, #2980b9, #6dd5fa);
+        }
+
+        .card {
+            border-radius: 16px;
+        }
+
+        .btn-success {
+            background-color: #27ae60;
+            border: none;
+        }
+
+        .btn-success:hover {
+            background-color: #219150;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5 mb-5">
+    <div class="card shadow-lg">
+        <div class="card-header header text-white text-center py-4">
+            <h2 class="mb-1"><i class="bi bi-heart-pulse-fill me-2"></i>Chronic Kidney Disease Predictor</h2>
+            <p class="mb-0">Enter your medical parameters to assess CKD risk</p>
+        </div>
+
+        <div class="card-body px-4 py-5">
+            <form method="POST" novalidate>
+                {% csrf_token %}
+                <div class="row">
+                    {% for field in form %}
+                        <div class="col-md-6 mb-4">
+                            <label class="form-label">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.errors %}
+                                <div class="text-danger small">{{ field.errors }}</div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-success px-5 py-2">
+                        <i class="bi bi-cpu-fill me-2"></i>Predict Now
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

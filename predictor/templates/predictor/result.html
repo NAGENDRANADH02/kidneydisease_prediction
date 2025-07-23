@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <div class="card shadow p-5 text-center">
+        <h2 class="mb-4 text-primary">Prediction Result</h2>
+
+        <h4 class="text-success mb-3">{{ result }}</h4>
+        <h5 class="text-warning">🩺 Risk of CKD: {{ risk_score }}</h5>
+
+        <form method="post" action="{% url 'generate_pdf' %}" class="mt-4">
+            {% csrf_token %}
+            {% for key, value in form_data.items %}
+                <input type="hidden" name="{{ key }}" value="{{ value }}">
+            {% endfor %}
+            <input type="hidden" name="result" value="{{ result }}">
+            <input type="hidden" name="risk_score" value="{{ risk_score }}">
+            <button type="submit" class="btn btn-danger me-2">📄 Download PDF Report</button>
+            <a href="/" class="btn btn-outline-primary">Predict Again</a>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
