@@ -3,13 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <title>Prediction Result</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<div class="container mt-5">
+    <!-- Bootstrap CSS + Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(to right, #f8f9fa, #f3e9ff);
+            font-family: 'Segoe UI', sans-serif;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            border-radius: 20px;
+            background: #ffffff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            font-weight: 700;
+            background: linear-gradient(to right, #8e44ad, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h4.text-success {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #27ae60 !important;
+        }
+
+        h5.text-warning {
+            font-weight: 500;
+            color: #f39c12 !important;
+        }
+
+        .btn-primary-custom {
+            background: linear-gradient(to right, #8e44ad, #9b59b6);
+            border: none;
+            color: #fff;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-custom:hover {
+            background: #732d91;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(155, 89, 182, 0.4);
+        }
+
+        .btn-outline-dark-custom {
+            border: 2px solid #8e44ad;
+            color: #8e44ad;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-dark-custom:hover {
+            background-color: #8e44ad;
+            color: #fff;
+        }
+
+        .form-container {
+            animation: slideUp 0.8s ease-in-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5 form-container">
     <div class="card shadow p-5 text-center">
-        <h2 class="mb-4 text-primary">Prediction Result</h2>
+        <h2 class="mb-4"><i class="bi bi-graph-up-arrow me-2"></i>Prediction Result</h2>
 
         <h4 class="text-success mb-3">{{ result }}</h4>
         <h5 class="text-warning">🩺 Risk of CKD: {{ risk_score }}</h5>
@@ -21,11 +103,19 @@
             {% endfor %}
             <input type="hidden" name="result" value="{{ result }}">
             <input type="hidden" name="risk_score" value="{{ risk_score }}">
-            <button type="submit" class="btn btn-danger me-2">📄 Download PDF Report</button>
-            <a href="/" class="btn btn-outline-primary">Predict Again</a>
+
+            <button type="submit" class="btn btn-primary-custom px-4 py-2 me-2">
+                <i class="bi bi-file-earmark-pdf-fill me-1"></i>Download PDF Report
+            </button>
+            <a href="/" class="btn btn-outline-dark-custom px-4 py-2">
+                <i class="bi bi-arrow-repeat me-1"></i>Predict Again
+            </a>
         </form>
     </div>
 </div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
