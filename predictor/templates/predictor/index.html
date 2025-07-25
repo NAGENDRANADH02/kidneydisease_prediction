@@ -10,37 +10,96 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
-        body {
-            background: linear-gradient(to right, #f1f2f6, #dff9fb);
-            font-family: 'Segoe UI', sans-serif;
+        /* Animated background */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        .form-label {
-            font-weight: 500;
+        body {
+            background: linear-gradient(-45deg, #f3e9ff, #fdf2e9, #e8daef, #f3e9ff);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            font-family: 'Segoe UI', sans-serif;
+            overflow-x: hidden;
         }
 
         .header {
-            background: linear-gradient(to right, #2980b9, #6dd5fa);
+            background: linear-gradient(to right, #8e44ad, #9b59b6);
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .card {
-            border-radius: 16px;
-        }
-
-        .btn-success {
-            background-color: #27ae60;
             border: none;
+            border-radius: 20px;
+            background: #fff;
+            transition: transform 0.3s ease;
         }
 
-        .btn-success:hover {
-            background-color: #219150;
+        .card:hover {
+            transform: scale(1.01);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .btn-purple {
+            background: linear-gradient(to right, #8e44ad, #9b59b6);
+            border: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-purple:hover {
+            background: linear-gradient(to right, #732d91, #8e44ad);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(142, 68, 173, 0.4);
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #2c3e50;
+            transition: all 0.3s;
         }
 
         input, select, textarea {
             width: 100%;
-            padding: 0.5rem;
-            border-radius: 8px;
+            padding: 0.6rem;
+            border-radius: 10px;
             border: 1px solid #ccc;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #8e44ad;
+            box-shadow: 0 0 6px rgba(155, 89, 182, 0.4);
+            outline: none;
+        }
+
+        .form-label:hover {
+            color: #8e44ad;
+        }
+
+        .bi-heart-pulse-fill {
+            animation: pulse 1.2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .card-body {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -69,7 +128,7 @@
                 </div>
 
                 <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-success px-5 py-2">
+                    <button type="submit" class="btn btn-purple px-5 py-2">
                         <i class="bi bi-cpu-fill me-2"></i>Predict Now
                     </button>
                 </div>
