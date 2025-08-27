@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-qb*0kun_@80dv-+)p90s@+w&$qorhw)4@&f*6@xft&56-8!gw+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('RENDER') is None  # Set DEBUG=False on Render
 
-ALLOWED_HOSTS = ['kidneydisease-prediction.vercel.app', '.vercel.app', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 INSTALLED_APPS = [
